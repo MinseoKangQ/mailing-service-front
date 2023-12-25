@@ -1,18 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, {useEffect, useState}  from 'react';
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import axios from 'axios';
 
 function App() {
+
   return (
-    <Router>
+    <div className="App">
+    <BrowserRouter>
       <Routes>
-        <Route path="/mailing-service/login" element={<Login />} />
-        <Route path="/mailing-service/signup" element={<SignUp />} />
-        <Route path="/mailing-service" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<Home />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
+    </div>
   );
 }
 

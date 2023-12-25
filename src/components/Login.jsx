@@ -9,7 +9,7 @@ const Login = () => {
       <input type="text" placeholder="아이디" />
       <input type="password" placeholder="비밀번호" />
       <button>로그인</button>
-      <Link to="/mailing-service/signup">계정이 없으신가요? 회원가입</Link>
+      <Link to="/signup">계정이 없으신가요? 회원가입</Link>
     </div>
   );
 };

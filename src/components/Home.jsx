@@ -6,13 +6,14 @@ const Home = () => {
   return (
     <div className="centered-container">
       <h1>메일링 서비스</h1>
-      <Link to="/mailing-service/login">
+      <Link to="/login">
         <button>로그인</button>
       </Link>
-      <Link to="/mailing-service/signup">
+      <Link to="/signup">
         <button>회원가입</button>
       </Link>
     </div>
+    
   );
 };
 

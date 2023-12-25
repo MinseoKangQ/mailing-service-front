@@ -1,9 +1,8 @@
-import React, {useEffect, useState}  from 'react';
-import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Route, Routes, BrowserRouter } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import axios from 'axios';
 
 function App() {
 

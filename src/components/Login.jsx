@@ -22,8 +22,12 @@ const Login = () => {
     try {
       const response = await axios.post('/mailing-service/api/login', formData);
       console.log('로그인 응답:', response.data);
-
-      if (response.status === 200) { // HTTP 상태 코드가 OK (200) 인 경우
+  
+      if (response.status === 200) {
+        // 예시: 로그인 성공 시 서버로부터 받은 사용자 식별자나 토큰을 저장
+        localStorage.setItem('id', response.data.id);
+        localStorage.setItem('name', response.data.name);
+  
         navigate('/'); // 홈 페이지로 이동
       }
     } catch (error) {

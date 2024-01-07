@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import axios from 'axios';
 
@@ -11,6 +11,8 @@ const SignUp = () => {
     pw2: ''
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -21,6 +23,10 @@ const SignUp = () => {
     try {
       const response = await axios.post('/mailing-service/api/signup', formData);
       console.log('회원가입 응답:', response.data);
+
+      if (response.status === 201) { // HTTP 상태 코드가 CREATED (201) 인 경우
+        navigate('/'); // 홈 페이지로 이동
+      }
     } catch (error) {
       console.error('회원가입 오류:', error);
     }

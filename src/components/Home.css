@@ -1,7 +1,18 @@
 .centered-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* 링크에 대한 스타일 추가 */
+.centered-container a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 부모 요소의 글자 색상을 상속받습니다 (선택적) */
+}
+
+.centered-container button {
+  cursor: pointer;
+  margin: 10px 0;
+}

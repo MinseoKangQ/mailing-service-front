@@ -1,0 +1,30 @@
+.MailList {
+    width: 100%; /* 표를 div 요소에 꽉 차게 함 */
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th, td {
+text-align: center;
+padding: 10px;
+}
+
+th {
+background-color: #f4f4f4;
+}
+
+td.title {
+text-align: left;
+}
+
+tr.read { /* 읽음 상태인 행 */
+color: grey;
+}
+
+tr {
+border-top: 1px solid #ddd; /* 행 사이의 경계선 */
+border-bottom: 1px solid #ddd;
+}

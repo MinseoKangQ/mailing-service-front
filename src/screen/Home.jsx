@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Header from "../components/home/Header";
-import Menu from "../components/home/Menu";
+import Header from "../components/Header";
+import Menu from "../components/Menu";
 import "./Home.css";
-import MailList from "../components/home/MailList";
+import MailList from "../components/MailList";
 
 const Home = () => {
   const [user, setUser] = useState(null);

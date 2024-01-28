@@ -1,0 +1,40 @@
+.MailList {
+    width: 100%; /* 표를 div 요소에 꽉 차게 함 */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+td.title {
+    text-align: left;
+    cursor: pointer; /* 마우스를 올렸을 때 커서 모양 변경 */
+}
+
+td.title:hover {
+    text-decoration: underline; /* 제목에 마우스를 올리면 밑줄 생성 */
+}
+
+tr.read { /* 읽음 상태인 행 */
+    color: black; /* 읽은 메일은 검정색 */
+}
+
+tr:not(.read) { /* 읽지 않은 상태인 행 */
+    color: black;
+    font-weight: 600; /* 읽지 않은 메일은 검정색 볼드체 */
+}
+
+tr {
+    border-top: 1px solid #ddd; /* 행 사이의 경계선 */
+    border-bottom: 1px solid #ddd;
+}

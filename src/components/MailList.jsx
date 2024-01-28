@@ -1,7 +1,26 @@
 import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./MailList.css";
 
 const MailList = ({ mails }) => {
+
+  const navigate = useNavigate();
+  const userId = localStorage.getItem("id");
+
+  const handleMailClick = async (mailId) => {
+    try {
+      await axios.put(`/mailing-service/api/mail/${userId}/${mailId}`);
+      console.log(`메일 ${mailId}을(를) 읽음으로 표시함`);
+    } catch (error) {
+      console.error("메일 상태 업데이트 중 오류 발생:", error);
+    }
+
+    // 메일 상세 페이지로 이동
+    navigate(`/mail/${userId}/${mailId}`);
+  };
+
+
   const sortedMails = mails.sort(
     (a, b) => new Date(b.sentAt) - new Date(a.sentAt)
   );
@@ -25,7 +44,7 @@ const MailList = ({ mails }) => {
               <td></td> {/* '삭제' 열에는 아무 내용도 포함하지 않음 */}
               <td>{mail.isRead ? "읽음" : "안 읽음"}</td>
               <td>{mail.sender}</td>
-              <td className="title">{mail.title}</td>
+              <td className="title" onClick={() => handleMailClick(mail.mailId)} >{mail.title}</td>
               <td>{mail.isImportant ? "중요" : "중요 아님"}</td>
               <td>{new Date(mail.sentAt).toLocaleString()}</td>
             </tr>

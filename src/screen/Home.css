@@ -10,7 +10,7 @@
 .menu-section {
   flex-basis: 25%;
   flex-shrink: 0;
-  padding: 20px;
+  border-right: 1px solid #ddd; /* 오른쪽에 선 추가 */
 }
 
 .mail-list-section {

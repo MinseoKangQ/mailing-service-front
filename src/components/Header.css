@@ -21,11 +21,15 @@
   background-color: #007bff;
   color: white; 
   border-radius: 4px; 
-  font-size: 16px; 
+  font-size: 1w;
 }
 
 .logout-button {
   margin-right: 20px;
+}
+
+.logout-button:hover {
+  background-color: #0056b3; /* 버튼 호버 시 색상 변경 */
 }
 
 .login-mailing-service-title, .login-mailing-service-welcome {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import MailDetail from '../components/MailDetail';
+import Menu from "../components/Menu";
 import './MailPage.css';
 
 const MailPage = () => {
@@ -22,11 +23,16 @@ const MailPage = () => {
   };
 
   return (
-    <div className="mail-page-container">
+    <div>
       <Header user={user} onLogout={onLogout} />
-      <div className="mail-detail-container">
-        <MailDetail />
-      </div>
+      <div className="centered-body-container">
+        <div className="menu-section">
+              <Menu />
+        </div>
+        <div className="mail-detail-container">
+          <MailDetail />
+        </div>
+    </div>
     </div>
   );
 };

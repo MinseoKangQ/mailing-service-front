@@ -1,0 +1,32 @@
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.menu-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: #0056b3; /* 버튼 호버 시 색상 변경 */
+}
+
+.menu-list {
+    margin-top: 20px;
+}
+
+.menu-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #dee2e6; /* 아이템 간 구분선 */
+}
+
+.menu-item:last-child {
+    border-bottom: none; /* 마지막 아이템 구분선 제거 */
+}

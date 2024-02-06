@@ -59,7 +59,6 @@ const Home = () => {
             <Menu />
           </div>
           <div className="mail-list-section">
-            {/* <MailList mails={mails} onDeleteSelectedMails={handleDeleteSelectedMails} /> */}
             <MailList mails={mails} onDeleteSelectedMails={handleDeleteSelectedMails} />
           </div>
         </div>

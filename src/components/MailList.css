@@ -38,3 +38,14 @@ tr {
     border-top: 1px solid #ddd; /* 행 사이의 경계선 */
     border-bottom: 1px solid #ddd;
 }
+
+.delete-button { 
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    border: none; 
+    background-color: #007bff;
+    color: white; 
+    border-radius: 4px; 
+    font-size: 16px; 
+  }

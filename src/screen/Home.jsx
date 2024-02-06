@@ -17,23 +17,31 @@ const Home = () => {
 
     if (userId && userName) {
       setUser({ id: userId, name: userName });
-
-      // 메일 데이터 가져오기
-      const fetchMails = async () => {
-        try {
-          const response = await axios.get(
-            `/mailing-service/api/mail/${userId}`
-          );
-          setMails(response.data); // 데이터를 상태에 저장
-          console.log("메일 데이터:", response.data); // 콘솔에 데이터 출력
-        } catch (error) {
-          console.error("메일 데이터를 가져오는데 실패했습니다.", error);
-        }
-      };
-
-      fetchMails();
+      fetchMails(userId);
     }
   }, []);
+
+  const fetchMails = async (userId) => {
+    try {
+      const response = await axios.get(`/mailing-service/api/mail/${userId}`);
+      setMails(response.data); // 데이터를 상태에 저장
+    } catch (error) {
+      console.error("메일 데이터를 가져오는데 실패했습니다.", error);
+    }
+  };
+
+  const handleDeleteSelectedMails = async (selectedMailIds) => {
+    const userId = localStorage.getItem("id");
+    try {
+      await Promise.all(selectedMailIds.map(mailId =>
+        axios.delete(`/mailing-service/api/mail/${mailId}`)
+      ));
+      // 성공적으로 삭제 후 메일 목록 새로고침
+      fetchMails(userId);
+    } catch (error) {
+      console.error("메일 삭제 중 오류 발생:", error);
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("id");
@@ -51,19 +59,18 @@ const Home = () => {
             <Menu />
           </div>
           <div className="mail-list-section">
-            <MailList mails={mails} />
+            {/* <MailList mails={mails} onDeleteSelectedMails={handleDeleteSelectedMails} /> */}
+            <MailList mails={mails} onDeleteSelectedMails={handleDeleteSelectedMails} />
           </div>
         </div>
       ) : (
         <div className="centered-container">
-          <div>
-            <Link to="/login">
-              <button>로그인</button>
-            </Link>
-            <Link to="/signup">
-              <button>회원가입</button>
-            </Link>
-          </div>
+          <Link to="/login">
+            <button>로그인</button>
+          </Link>
+          <Link to="/signup">
+            <button>회원가입</button>
+          </Link>
         </div>
       )}
     </div>

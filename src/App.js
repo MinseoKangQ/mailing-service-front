@@ -8,14 +8,14 @@ import MailPage from './screen/MailPage';
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/mail/:userId/:mailId" element={<MailPage />} />
-        </Routes>
-      </Router>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/mail/:userId/:mailId" element={<MailPage />} />
+          </Routes>
+        </Router>
     </div>
   );
 }

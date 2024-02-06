@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./MailList.css";
 
-const MailList = ({ mails }) => {
+const MailList = ({ mails, onDeleteSelectedMails }) => {
 
   const navigate = useNavigate();
   const userId = localStorage.getItem("id");
+  const [selectedMails, setSelectedMails] = useState([]);
 
   const handleMailClick = async (mailId) => {
     try {
@@ -16,10 +17,26 @@ const MailList = ({ mails }) => {
       console.error("메일 상태 업데이트 중 오류 발생:", error);
     }
 
-    // 메일 상세 페이지로 이동
-    navigate(`/mail/${userId}/${mailId}`);
+    navigate(`/mail/${userId}/${mailId}`); // 메일 상세 페이지로 이동
   };
 
+  const handleCheckboxChange = (mailId, isChecked) => {
+    if (isChecked) {
+      setSelectedMails(prev => [...prev, mailId]);
+    } else {
+      setSelectedMails(prev => prev.filter(id => id !== mailId));
+    }
+  };
+
+  const handleDeleteSelectedMails = async () => {
+    try {
+      // 선택된 메일들을 삭제하는 API 요청
+      await onDeleteSelectedMails(selectedMails);
+      setSelectedMails([]); // 선택된 메일 목록 초기화
+    } catch (error) {
+      console.error("메일 삭제 중 오류 발생:", error);
+    }
+  };
 
   const sortedMails = mails.sort(
     (a, b) => new Date(b.sentAt) - new Date(a.sentAt)
@@ -27,6 +44,7 @@ const MailList = ({ mails }) => {
 
   return (
     <div className="MailList">
+      <button className="delete-button" onClick={handleDeleteSelectedMails}>삭제</button>
       <table>
         <thead>
           <tr>
@@ -41,7 +59,13 @@ const MailList = ({ mails }) => {
         <tbody>
           {sortedMails.map((mail, index) => (
             <tr key={index} className={mail.isRead ? "read" : ""}>
-              <td></td> {/* '삭제' 열에는 아무 내용도 포함하지 않음 */}
+              <td>
+                <input
+                  type="checkbox"
+                  onChange={e => handleCheckboxChange(mail.mailId, e.target.checked)}
+                  checked={selectedMails.includes(mail.mailId)}
+                />
+              </td>
               <td>{mail.isRead ? "읽음" : "안 읽음"}</td>
               <td>{mail.sender}</td>
               <td className="title" onClick={() => handleMailClick(mail.mailId)} >{mail.title}</td>

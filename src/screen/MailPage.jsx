@@ -5,7 +5,12 @@ import MailDetail from '../components/MailDetail';
 import './MailPage.css';
 
 const MailPage = () => {
-  const [user, setUser] = useState(/* 여기에 user 상태 초기값을 설정 */);
+  const [user, setUser] = useState(() => {
+    // 로컬 스토리지에서 사용자 정보 불러오기
+    const savedId = localStorage.getItem("id");
+    const savedName = localStorage.getItem("name");
+    return savedId && savedName ? { id: savedId, name: savedName } : null;
+  });
   const navigate = useNavigate();
 
   const onLogout = () => {

@@ -1,0 +1,52 @@
+.mail-form {
+    margin: 20px 10px;
+    /* padding: 20px; */
+    padding-left: 20px;
+    border-radius: 5px;
+    max-width: 100%; /* 화면 가로 꽉 차게 */
+    box-sizing: border-box; /* 패딩을 포함한 너비 */
+  }
+  
+  .mail-form .form-control {
+    margin-bottom: 10px;
+  }
+  
+  .star-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc; /* 빈 별의 기본 색상 */
+  }
+  
+  .star-icon.filled {
+    color: #ffc107; /* 노란색 별 */
+  }
+  
+  .mail-form input[type="text"],
+  .mail-form textarea {
+    width: 100%; /* 가로 꽉 차게 */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .mail-form textarea {
+    height: 150px;
+    resize: vertical;
+  }
+  
+  .mail-form button[type="submit"] {
+    width: 15%; /* 버튼도 가로 꽉 차게 */
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .mail-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

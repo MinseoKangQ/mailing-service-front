@@ -4,6 +4,7 @@ import Home from './screen/Home';
 import Login from './screen/Login';
 import SignUp from './screen/SignUp';
 import MailPage from './screen/MailPage';
+import MailNew from './screen/MailNew';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<Home />} />
             <Route path="/mail/:userId/:mailId" element={<MailPage />} />
+            <Route path="/new" element={<MailNew />} />
+
           </Routes>
         </Router>
     </div>
